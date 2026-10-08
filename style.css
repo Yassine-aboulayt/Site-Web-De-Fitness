@@ -1,3 +1,4 @@
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -544,4 +545,78 @@ button:focus-visible {
   margin-top: 24px;
   font-size: 13px;
   color: #94A3B8;
+}
+
+.formulaire-contact {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background-color: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(15, 27, 45, 0.08);
+}
+
+.formulaire-contact .champ {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formulaire-contact .champ label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0F1B2D;
+}
+
+.formulaire-contact .champ input,
+.formulaire-contact .champ textarea,
+.formulaire-contact .champ select {
+  width: 100%;
+  min-width: 0;
+  padding: 14px 16px;
+  background-color: #F7F8FA;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #0F1B2D;
+}
+
+.formulaire-contact .champ textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+
+.formulaire-contact .champ input:focus,
+.formulaire-contact .champ textarea:focus,
+.formulaire-contact .champ select:focus {
+  outline: 2px solid #C2410C;
+  outline-offset: 2px;
+  border-color: #FF6B2C;
+  background-color: #FFFFFF;
+}
+
+.formulaire-contact .bouton {
+  align-self: flex-start;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+@media (max-width: 600px) {
+  #contact {
+    padding: 48px 0;
+  }
+
+  .formulaire-contact {
+    padding: 24px;
+    gap: 20px;
+  }
+
+  .formulaire-contact .bouton {
+    width: 100%;
+  }
 }
