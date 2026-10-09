@@ -1,0 +1,310 @@
+— HTML :
+
+- Définition et rôle du HTML :
+  HTML permet d’organiser les textes, les images, les liens et les formulaires d’une page web.
+
+- Structure de base d’une page :
+  La partie `head` contient les informations de la page. La partie `body` contient ce qui apparaît à l’écran.
+
+- Balises sémantiques :
+  `header` contient l’en-tête, `nav` les liens de navigation, `main` le contenu principal, `section` une partie du contenu et `footer` le pied de page.
+
+- Formulaires, liens et images :
+  Sur le site Élan Fitness, les liens permettent de passer d’une page à l’autre. Les images présentent la salle et les coachs. Le formulaire de contact permet de saisir un nom, un email et un message.
+
+EXEMPLE — Formulaire de la page Contact :
+
+html
+<form class="formulaire-contact">
+    <div class="champ">
+        <label for="nom-complet">Votre nom</label>
+        <input
+            type="text"
+            id="nom-complet"
+            name="nom_complet"
+            placeholder="Votre nom complet"
+            required
+        >
+    </div>
+
+    <div class="champ">
+        <label for="email">Email</label>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="vous@exemple.com"
+            required
+        >
+    </div>
+
+    <div class="champ">
+        <label for="message">Message</label>
+        <textarea
+            id="message"
+            name="message"
+            rows="6"
+            required
+        ></textarea>
+    </div>
+
+    <button type="button" class="contact-envoyer">
+        Envoyer
+    </button>
+</form>
+
+Dans le code fourni, le bouton est de type `button` : il ne soumet pas le formulaire à lui seul. L’envoi du message reste à ajouter.
+
+---
+
+— CSS :
+
+- Définition et rôle du CSS :
+  CSS permet de choisir l’apparence des pages du site.
+
+- Sélecteurs et propriétés :
+  Les sélecteurs ciblent un élément ou une classe. Les propriétés changent sa couleur, sa taille ou son espacement.
+
+- Couleurs, marges, padding et bordures :
+  `color` change la couleur du texte. `margin` ajoute de l’espace à l’extérieur, `padding` à l’intérieur et `border` ajoute un contour.
+
+- Organisation du code CSS :
+  Les pages utilisent le même fichier `style.css`. Il permet de regrouper les styles du menu, des cartes et du formulaire.
+
+EXEMPLE — Style proposé pour le formulaire de contact :
+
+css
+.formulaire-contact {
+    padding: 28px;
+    background-color: #f5f5f5;
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+}
+
+.champ {
+    margin-bottom: 18px;
+}
+
+.champ label {
+    display: block;
+    margin-bottom: 8px;
+    color: #222222;
+}
+
+.champ input,
+.champ textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #aaaaaa;
+    border-radius: 6px;
+}
+
+
+---
+
+— Flexbox :
+
+- `display: flex` :
+  Permet d’aligner plusieurs éléments dans un même bloc.
+
+- `flex-direction` :
+  Place les éléments en ligne ou en colonne.
+
+- `justify-content` :
+  Règle leur position et leur répartition sur l’axe principal.
+
+- `flex-wrap` :
+  Permet aux éléments de passer à la ligne lorsqu’il manque de place.
+
+- `gap` :
+  Définit l’espace entre les éléments.
+
+EXEMPLE — Alignement des cartes de la page Accueil :
+
+html
+<div class="cartes">
+    <article class="carte carte-avantage">
+        <h3>Coachs diplômés</h3>
+        <p>Un accompagnement personnalisé à chaque séance.</p>
+    </article>
+
+    <article class="carte carte-avantage">
+        <h3>Matériel récent</h3>
+        <p>Des équipements entretenus et renouvelés chaque année.</p>
+    </article>
+
+    <article class="carte carte-avantage">
+        <h3>Ouvert 7j/7</h3>
+        <p>De 6h00 à 22h00, pour t'entraîner quand tu veux.</p>
+    </article>
+</div>
+
+
+css
+.cartes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.carte-avantage {
+    flex: 1 1 250px;
+    padding: 20px;
+}
+
+
+---
+
+— Responsive Design :
+
+- Définition du responsive :
+  Le responsive permet d’adapter les pages aux écrans des ordinateurs et des téléphones.
+
+- Meta viewport :
+  Elle indique au navigateur d’utiliser la largeur de l’appareil pour afficher la page.
+
+- Media queries avec `@media` :
+  Elles permettent de changer la présentation selon la largeur de l’écran.
+
+- Breakpoints (`900px` et `600px`) :
+  Ce sont les limites choisies pour appliquer ces changements.
+
+- Adaptation aux ordinateurs et téléphones :
+  Sur la page À propos, le texte et la photo peuvent être placés côte à côte sur un grand écran, puis l’un sous l’autre sur un petit écran.
+
+EXEMPLE — Adaptation de la page À propos :
+
+html
+<meta name="viewport"
+      content="width=device-width, initial-scale=1">
+
+
+css
+.apropos-contenu {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.apropos-texte {
+    flex: 1;
+}
+
+.apropos-image {
+    width: 45%;
+    border-radius: 12px;
+}
+
+@media (max-width: 900px) {
+    .apropos-contenu {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .apropos-image {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .apropos-texte h1 {
+        font-size: 26px;
+    }
+
+    .apropos-contenu {
+        gap: 16px;
+    }
+}
+
+
+---
+
+— Animations CSS :
+
+- `transform` :
+  Permet de déplacer, de tourner ou de changer la taille d’un élément.
+
+- `:hover` :
+  Applique un style lorsque la souris passe sur un élément.
+
+EXEMPLE — Effet sur le bouton de la page Accueil :
+
+html
+<a href="./Programmes.html"
+   class="bouton bouton-principal">
+    Voir les programmes
+</a>
+
+
+css
+.bouton-principal {
+    display: inline-block;
+    padding: 14px 24px;
+    background-color: #e63946;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+}
+
+.bouton-principal:hover {
+    transform: translateY(-4px);
+}
+
+
+---
+
+— SEO :
+
+- Définition du référencement naturel :
+  Le SEO aide les moteurs de recherche à comprendre les pages et peut améliorer la visibilité du site.
+
+- Balise `title` et meta description :
+  Elles donnent le titre de la page et un résumé de son contenu.
+
+- Titres hiérarchisés (`h1`, `h2`, `h3`) :
+  Ils organisent le contenu avec un titre principal, des titres de parties et des sous-titres.
+
+- Texte alternatif des images avec `alt` :
+  Il décrit les images utiles pour les personnes qui ne peuvent pas les voir et pour les moteurs de recherche.
+
+- URLs claires :
+  Les noms de pages comme `Contact.html` et `Programmes.html` indiquent leur sujet.
+
+- Contenu pertinent :
+  Les informations sur les activités, les horaires et l’adresse répondent aux besoins des visiteurs.
+
+- Performances :
+  Réduire le poids des images aide les pages à charger plus rapidement.
+
+EXEMPLE — Informations présentes sur la page Accueil :
+
+html
+<head>
+    <title>Élan Fitness | Salle de sport à Casablanca</title>
+
+    <meta
+        name="description"
+        content="Élan Fitness, salle de sport à Casablanca :
+                 musculation, yoga, cardio et boxe fitness
+                 avec des coachs diplômés.
+                 Réservez votre cours d'essai gratuit."
+    >
+</head>
+
+
+html
+<h1>Dépasse tes limites, à ton rythme</h1>
+
+<h2>Pourquoi Élan Fitness ?</h2>
+
+<h3>Coachs diplômés</h3>
+
+<img
+    class="hero-image"
+    src="img/hero.jpg"
+    alt="Des personnes s'entraînent dans une salle de sport lumineuse à Casablanca"
+>
